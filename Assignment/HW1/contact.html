@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+</head>
+
+<body>
+
+    <form method="post" action="submit-form-url" autocomplete="on">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required autofocus><br>
+
+        <!-- Password  -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter a password" required><br>
+
+        <!-- Email  -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+
+        <!-- Checkbox -->
+        <label for="Hiring">Are you currently Hiring?</label>
+        <input type="checkbox" id="Hiring" name="Hiring"><br>
+
+        <!-- Date -->
+        <label for="appointment">Schedule a meeting with me!</label>
+        <input type="date" id="appointment" name="appointment" required><br>
+
+        <!-- Range  -->
+        <label for="experience">Years of experience required for the role:</label>
+        <input type="range" id="experience" name="experience" min="0" max="30"><br>
+
+        <!-- Salary  -->
+        <label for="desired-salary">Offered Annual Salary ($):</label>
+        <input type="number" id="desired-salary" name="desired-salary"><br>
+
+        <!-- Cellphone -->
+        <label for="phone">Cell Phone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="(xxx) xxx-xxxx"><br>
+
+        <!-- Role Dropdown -->
+        <label for="position">Position you'd think I'd be a good fit for:</label>
+        <select id="position" name="position">
+            <option value="junior">Junior Developer</option>
+            <option value="senior">Tech Consulting</option>
+            <option value="manager">Project Manager Intern</option>
+            <option value="manager">Other roles</option>
+        </select><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <a href="home.html">Back to Home</a>
+</body>
+
+</html>

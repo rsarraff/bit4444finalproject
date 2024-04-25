@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework 4 Extra Credit #2</title>
+    <script>
+        function calculateRectangleArea(length, width) {
+            let area = length * width;
+            return area.toFixed(2); 
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const pElement = document.querySelector('p');
+
+            pElement.addEventListener('click', function() {
+                let length = prompt('Please enter the length of the rectangle in inches:');
+                let width = prompt('Please enter the width of the rectangle in inches:');
+
+                let area = calculateRectangleArea(length, width);
+
+                document.getElementById('areavalue').textContent = area;
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>The area of the rectangle is <span id="areavalue">___________</span> square inches.</p>
+</body>
+</html>

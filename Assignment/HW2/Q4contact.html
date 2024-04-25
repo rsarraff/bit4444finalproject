@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/free-vector/blue-curve-background_53876-113112.jpg?size=626&ext=jpg&ga=GA1.1.1448711260.1707177600&semt=ais'); 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+        }
+
+        .title {
+            position: relative;
+            margin-bottom: 20px; 
+        }
+
+        .icon img {
+            margin-left: 30px; 
+            margin-top: 10px; 
+        }
+
+        .caption {
+            position: absolute; 
+            top: 10px; 
+            left: 30px; 
+            color: black; 
+            z-index: 1; 
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="title">
+       <div class="icon"> <img src="contacticon.jpg" width="200" height="200"/> </div>
+       <div class="caption"> Please feel free to contact me </div>
+    </div>
+    <form method="post" action="submit-form-url" autocomplete="on">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required autofocus><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter a password" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+
+        <label for="Hiring">Are you currently Hiring?</label>
+        <input type="checkbox" id="Hiring" name="Hiring"><br>
+
+        <label for="appointment">Schedule a meeting with me!</label>
+        <input type="date" id="appointment" name="appointment" required><br>
+
+        <label for="experience">Years of experience required for the role:</label>
+        <input type="range" id="experience" name="experience" min="0" max="30"><br>
+
+        <label for="desired-salary">Offered Annual Salary ($):</label>
+        <input type="number" id="desired-salary" name="desired-salary"><br>
+
+        <label for="phone">Cell Phone:</label>
+        <input type="tel" id="phone" name="phone" placeholder="(xxx) xxx-xxxx"><br>
+
+        <label for="position">Position you'd think I'd be a good fit for:</label>
+        <select id="position" name="position">
+            <option value="junior">Junior Developer</option>
+            <option value="senior">Tech Consulting</option>
+            <option value="manager">Project Manager Intern</option>
+            <option value="manager">Other roles</option>
+        </select><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <a href="home.html">Back to Home</a>
+</body>
+
+</html>

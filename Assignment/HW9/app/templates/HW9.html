@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<script>
+    // Keep the existing AJAX script to load the table without a page refresh
+    document.addEventListener("DOMContentLoaded", init);
+
+    function init() {
+        document.getElementById("sid").addEventListener("change", loadTable);
+    }
+
+    function loadTable() {
+        var sid = document.getElementById("sid").value;
+        fetch("/searchProducts?suppid=" + sid, {
+            method: "GET",
+        }).then(response => response.text()).then(data => {
+            document.getElementById("placeholder").innerHTML = data;
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+</script>
+
+<form action="{{ url_for('graphProducts') }}" method="GET">
+    <label for="suppid">Select a Supplier ID to Search for Products:
+        <select id="sid" name="suppid" class="form-select" aria-label="Default select example">
+            <option selected>Select Supplier</option>
+            {% for supp in suppids %}
+                <option value="{{ supp.SupplierID }}">{{ supp.SupplierID }}</option>
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">View Chart</button>
+</form>
+
+<div id="placeholder"></div>
+
+{% endblock content %}

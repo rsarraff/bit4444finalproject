@@ -1,0 +1,29 @@
+{% if products %}
+    <h3>Search Results</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Product ID</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Unit Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{ product.PID }}</td>
+                    <td>{{ product.PName }}</td>
+                    <td>{{ product.PDescription }}</td>
+                    <td>{{ product.UnitPrice }}</td>
+                    <td>{{ product.Quantity }}</td>
+                    <td>{{ product.PCategory }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No results found for the given search criteria.</p>
+{% endif %}

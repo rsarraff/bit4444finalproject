@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Client-side input validation example</title>
+	<script>
+		function checkInputs(e){
+			//event handler for the click eevent of the submit button
+			console.log("hello");
+
+			var outputStr = "";
+			var error = false;
+
+			//check if the full name is provided
+			var fullname = document.forms[0].fullname.value;
+			if (fullname = ""){
+				outputStr = "please provide the full name";
+				error = true; 
+			}
+			//check other input values
+
+			//check if error is true, if true, stop the form submission
+			if (error){
+				alert(outputStr);
+				e.preventDefault();
+			}
+		}
+		function init(){
+			// register an event handler for the submit event of the submit button
+
+			//Get the reference of the submit button(source of event)
+			var theform = document.forms[0];
+
+			theform.addEventListener("submit",checkInputs);
+		}
+
+		document.addEventListener("DOMContentLoaded",init);
+	</script>
+</head>
+
+<body>
+	<h2>Please fill out the following form; all fields are required</h2>
+	<form name="myForm" method="post" action="http://www.vt.edu">
+		<strong>Full Name:</strong><br />
+		<input type="text" name="fullName" size="20" /><br />
+		<strong>Address:</strong><br />
+		<textarea name="address" rows="3" cols="25"></textarea><br /><br />
+
+		<div>
+			<strong>Age:</strong>
+			<input type="radio" name="coop" value="yes" />Yes
+			<input type="radio" name="coop" value="no" />No
+		</div><br /><br />
+
+		<div>Are you going to grad school?</div>
+		<input type="radio" name="gradSchool" value="yes" />Yes
+		<input type="radio" name="gradSchool" value="no" />No<br /><br />
+
+		<div id="test">
+			Which of the following graduate entrance exam have you taken?<br />
+			(You must select at least one) <br />
+			<input type="checkbox" name="gradexam" value="donor" />GMAT&nbsp; <br />
+			<input type="checkbox" name="gradexam" value="sports" />GRE&nbsp;<br />
+		</div>
+		<input type="submit" name="button1" value="Submit" />
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client-side input validation example</title>
+    <style>
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<form id="ContactInformation">
+    <label for="FullName">Full Name:</label>
+    <input type="text" id="FullName"> <br>
+
+    <label for="CompanyRepresented">Company Represented:</label>
+    <input type="text" id="CompanyRepresented"> <br>
+
+    <label for="Email">Email:</label>
+    <input type="text" id="Email"> <br>
+
+    <label for="JobPosition">Type of Position:</label>
+    <select name="Position" id="JobPosition">
+        <option value="">Select a Position</option>
+        <option value="Full-Time Position">Full-Time Job Position</option>
+        <option value="Internship Position">Internship Job Position</option>
+    </select> <br>
+
+    <label for="StartingYear">Starting Year:</label> <br>
+    <input type="number" id="StartingYear"> <br>
+
+    <label for="SalaryAmount">Salary Level (no commas):</label>
+    <input type="number" id="SalaryAmount"> <br>
+    <button type="button" onclick="validateForm()">Submit</button>
+</form>
+
+<script>
+    function validateForm() {
+        let isValid = true;
+        resetErrors();
+
+        let fullName = document.getElementById("FullName").value;
+        let companyRepresented = document.getElementById("CompanyRepresented").value;
+        let emailEntry = document.getElementById("Email").value;
+        let typeOfPosition = document.getElementById("JobPosition").value;
+        let startingYear = parseInt(document.getElementById("StartingYear").value);
+        let salaryAmount = parseInt(document.getElementById("SalaryAmount").value);
+
+        if (fullName === "") {
+            displayErrorMessage("FullName", "Please enter a valid name.");
+            isValid = false;
+        }
+
+        if (companyRepresented === "") {
+            displayErrorMessage("CompanyRepresented", "Please enter the company represented.");
+            isValid = false;
+        }
+
+        if (emailEntry === "") {
+            displayErrorMessage("Email", "Please enter an email.");
+            isValid = false;
+        }
+
+        if (typeOfPosition === "") {
+            displayErrorMessage("JobPosition", "Please select a position.");
+            isValid = false;
+        }
+
+        if (isNaN(startingYear) || startingYear < new Date().getFullYear() || startingYear > 2030) {
+            displayErrorMessage("StartingYear", "Please enter a valid starting year between " + new Date().getFullYear() + " and 2030.");
+            isValid = false;
+        }
+
+        if (isNaN(salaryAmount) || salaryAmount <= 0) {
+            displayErrorMessage("SalaryAmount", "Salary must be greater than 0.");
+            isValid = false;
+        }
+
+        if (isValid) {
+            window.location.href = "success.html";
+        }
+    }
+
+    function resetErrors() {
+        let errorElements = document.querySelectorAll(".error");
+        errorElements.forEach(function (element) {
+            element.parentNode.removeChild(element);
+        });
+
+        document.querySelectorAll('label').forEach(function(label) {
+            label.style.fontWeight = "normal";
+            label.style.color = "black";
+        });
+    }
+
+    function displayErrorMessage(showElement, displayMessage) {
+        let inputElement = document.getElementById(showElement);
+        let label = document.querySelector('label[for="' + showElement + '"]');
+        let errorMessage = document.createElement("div");
+
+        errorMessage.className = "error";
+        errorMessage.textContent = displayMessage;
+
+        inputElement.parentNode.insertBefore(errorMessage, inputElement.nextSibling);
+
+        label.style.fontWeight = "bold";
+        label.style.color = "red";
+    }
+</script>
+</body>
+</html>

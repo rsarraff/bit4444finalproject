@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+
+   <form method="POST" action="{{ url_for('updateSupplier') }}" class="container mt-5">
+       <div class="mb-3">
+           <label for="SupplierID" class="form-label">Supplier ID</label>
+           <input id="SupplierID" name="SupplierID" type="number" class="form-control" value="{{ request.form.get('SupplierID', '') }}" >
+       </div>
+       <div class="mb-3">
+           <label for="CompanyName" class="form-label">Company Name</label>
+           <input id="CompanyName" name="CompanyName" type="text" class="form-control" value="{{ request.form.get('CompanyName', '') }}" >
+       </div>
+       <div class="mb-3">
+           <label for="City" class="form-label">City</label>
+           <input id="City" name="City" type="text" class="form-control" value="{{ request.form.get('City', '') }}" >
+       </div>
+       <div class="mb-3">
+           <label for="Country" class="form-label">Country</label>
+           <input id="Country" name="Country" type="text" class="form-control" value="{{ request.form.get('Country', '') }}" >
+       </div>
+       <button type="submit" class="btn btn-primary mb-3">Update Supplier</button>
+   </form>
+
+   {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+{% endblock content %}

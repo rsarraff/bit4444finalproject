@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //define a function that takes height and weight as the input and calculates BMI 
+        function calBMI(height, weight){
+            // BMI = 703*weight / (height*height)
+            var bmi = 703 * weight / (height * height);
+            return bmi;
+        }
+
+        document.writeln("My BMI is " + calBMI(65, 150 ));
+
+    </script>
+
+    <script>
+        // a running clock demo
+        function runningclock(){
+            
+            setInterval(displayClock, 1000);
+
+            function displayClock(){
+                // get the current timestamp
+                let currentTime = new Date();
+
+                // get the hour, minute, and second values from the current timestamp
+                let hour = currentTime.getHours();
+                let minutes = currentTime.getMinutes();
+                let seconds = currentTime.getSeconds();
+
+                // display a clock value (hh:mm:ss) in the element with id=placeholder
+                let clock = "" + hour + ":" + minutes + ":" + seconds;
+
+                let selectedElement = document.getElementById("placeholder");
+                selectedElement.innerHTML = clock;
+            }
+        }
+
+        function init(){
+            // the event handler for DOMContentLoaded event
+            // define event handlers for page elements
+
+            console.log("hello");
+            runningclock();
+
+
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+
+
+    </script>
+
+    <div id="placeholder">00:00</div>
+</body>
+</html>

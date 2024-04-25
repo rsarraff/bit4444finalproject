@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h2>Remove Product</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Category</th>
+            <th>Image Link</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.PID }}</td>
+            <td>{{ product.PName }}</td>
+            <td>{{ product.PDescription }}</td>
+            <td>{{ product.UnitPrice }}</td>
+            <td>{{ product.Quantity }}</td>
+            <td>{{ product.PCategory }}</td>
+            <td>{{ product.Image }}</td>
+            <td>
+               <td>
+            <form action="{{ url_for('deleteProduct') }}" method="POST">
+                <input type="hidden" name="pid" value="{{ product.PID }}">
+                <input type="number" name="confirm_pid" placeholder="Enter PID to confirm" required>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="verifyDelete{{ product.PID }}" name="verify_delete" required>
+                    <label class="form-check-label" for="verifyDelete{{ product.PID }}">Confirm</label>
+                </div>
+                <button type="submit" class="btn btn-danger">Remove</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+{% endblock content %}

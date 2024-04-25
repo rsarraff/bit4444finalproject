@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>hw3q1</title>
+</head>
+<body>
+    <script>
+        // Initializes array
+        var grades = [];
+
+        // Asks number of students
+        var numberOfStudents = parseInt(prompt("Enter the total number of students:"), 10);
+
+        // First loop to collect grades and stores by pushing. 
+        for (var i = 0; i < numberOfStudents; i++) {
+            var grade = parseInt(prompt("Enter grade for student " + (i + 1) + ":"), 10);
+            grades.push(grade);
+        }
+
+        var sumOfGrades = 0;
+        var highestGrade = grades[0];
+        var lowestGrade = grades[0];
+
+        // loop 2 to calculate sum of grades.
+        for (var i = 0; i < grades.length; i++) {
+            sumOfGrades += grades[i];
+            if (grades[i] > highestGrade) highestGrade = grades[i];
+            if (grades[i] < lowestGrade) lowestGrade = grades[i];
+        }
+
+        // GPA Calculation
+        var gpa = sumOfGrades / numberOfStudents;
+
+        document.writeln("Number of Students: " + numberOfStudents + "<br>");
+        document.writeln("GPA: " + gpa.toFixed(2) + "<br>");
+        document.writeln("Best Grade: " + highestGrade + "<br>");
+        document.writeln("Worst Grade: " + lowestGrade);
+    </script>
+</body>
+</html>
+

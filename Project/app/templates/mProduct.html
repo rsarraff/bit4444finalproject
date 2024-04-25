@@ -1,0 +1,63 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<h2>Modify Product</h2>
+<form method="POST" action="/modifyProductForm" class="container mt-5">
+    <div class="mb-3">
+        <label for="productId" class="form-label">Product ID</label>
+        <input id="productId" name="pid" type="number" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="productName" class="form-label">Product Name</label>
+        <input id="productName" name="pname" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="productDescription" class="form-label">Description</label>
+        <textarea id="productDescription" name="pdescription" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="unitPrice" class="form-label">Unit Price</label>
+        <input id="unitPrice" name="unitprice" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="productCategory" class="form-label">Category</label>
+        <select id="productCategory" name="pcategory" class="form-control">
+            <option value="">Choose a category</option>
+            <option value="1">Tools</option>
+            <option value="2">Spices</option>
+            <option value="3">Meat</option>
+            <option value="4">Seeds</option>
+            <option value="5">Animal Feed</option>
+            <option value="6">Fruits</option>
+            <option value="7">Raw Materials</option>
+            <option value="8">Grains</option>
+            <option value="9">Vegetables</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="productQuantity" class="form-label">Quantity</label>
+        <input id="productQuantity" name="pquantity" type="number" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="urlImage" class="form-label">Image Link</label>
+        <input id="urlImage" name="urlimage" type="text" class="form-control">
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="verifyCheck" name="verify">
+        <label class="form-check-label" for="verifyCheck">Verify changes</label>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Modify Product</button>
+    </div>
+</form>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class="alerts">
+            {% for message in messages %}
+                <li class="alert">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% endblock content %}

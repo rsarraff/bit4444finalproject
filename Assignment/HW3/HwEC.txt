@@ -1,0 +1,543 @@
+16. 
+function log (param){
+console.log(param);
+}
+
+17. 
+function shout(x){
+ var y = x + x; 
+  console.log(y);
+  return y;
+}
+
+18. 
+'Roy and Roy'
+
+19. 
+'TicTacTicTac'
+
+20. 
+function length(x) {
+  return x.length;
+}
+
+21. 
+function toCase(x) {
+  return x.toLowerCase() + '-' + x.toUpperCase();
+}
+
+22. 
+function shortcut(x, y) {
+  return x.charAt(0) + y.charAt(0);
+}
+
+23. 
+function firstChar(x) {
+  var trim = x.trim();
+  return trim.charAt(0);
+}
+
+24. 
+function indexOfIgnoreCase(x, y) {
+  var xcase = x.toLowerCase();
+  var ycase = y.toLowerCase();
+  return xcase.indexOf(ycase);
+}
+
+25. 
+function secondIndexOf(x, y) {
+  var firstIndex = x.indexOf(y);
+  return x.indexOf(y, firstIndex + 1);
+}
+
+26. 
+function firstWord(x) {
+  var y = x.indexOf(' ');
+  return x.substr(0, y);
+}
+
+27. 
+function normalize(c){
+var date = c.replace('-','/');
+  date = date.replace('-','/');
+  return date;
+}
+
+28.
+function add(x, y) {
+  return x + y;
+}
+
+29. 
+7
+
+30. 
+function toFahrenheit(celsius) {
+  return 1.8 * celsius + 32;
+}
+
+31.
+function onesDigit(x) {
+  return x % 10;
+}
+
+32.
+function mean(x, y) {
+  return (x + y) / 2;
+}
+
+33.
+function hypotenuse(x, y) {
+  var z = Math.pow(x, 2) + Math.pow(y, 2);
+  return Math.sqrt(z);
+}
+
+34.
+function midrange(a,b,c){
+  var min = Math.min(a, b, c);
+  var max = Math.max(a, b, c);
+  return (min + max) / 2;
+}
+
+35.
+function area(x) {
+  return Math.PI * x * x;
+}
+
+36. 
+function round100(x) {
+  return Math.round(x / 100) * 100;
+}
+
+37. 
+function dice() {
+  var x = Math.random() * 6;
+  return Math.ceil(x);
+}
+
+38.
+function add(x) {
+  var s1 = parseInt(x, 10);
+  var index = x.indexOf('+');
+  var y = x.substr(index + 1);
+  var s2 = parseInt(y, 10);
+  return s1 + s2;
+}
+
+39.
+function nand(a, b) {
+  let and = a && b;
+  return !and;
+}
+
+40. 
+function nor(a, b) {
+  return !(a || b);
+}
+
+41. 
+function xor(a, b) {
+  return a && !b || !a && b;
+}
+
+42. 
+function equals(a, b) {
+  return a === b;
+}
+
+43. 
+function equals(a, b, c) {
+  return a === b && a === c;
+}
+
+44. 
+function isEven(a) {
+  return a % 2 === 0;
+}
+
+45.
+function unequal(a, b, c) {
+  return a !== b && a !== c && b !== c;
+}
+
+46. 
+function isThreeDigit(a) {
+  return a >= 100 && a < 1000;
+}
+
+47.
+function equals(a, b) {
+  var result = 'UNEQUAL';
+  if (a === b) {
+    result = 'EQUAL';
+  }
+  return result;
+}
+
+48. 
+function repdigit(x) {
+  var ten = Math.floor(x / 10);
+  var one = x % 10;
+  if (one === ten) {
+    return 'Repdigit!';
+  }
+  return 'No Repdigit!';
+}
+
+49.
+function addWithSurcharge(a, b) {
+
+  var sc = 0;
+
+  if (a <= 10) {
+    sc = sc + 1;
+  } else {
+    sc = sc + 2;
+  }
+
+  if (b <= 10) {
+    sc = sc + 1;
+  } else {
+    sc = sc + 2;
+  }
+
+  return a + b + sc;
+}
+
+50.
+function addWithSurcharge(a1, a2) {
+    function surcharge(b) {
+        if (b <= 10) {
+            return 1;
+        } else if (b <= 20) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+    
+    var total = a1 + surcharge(a1) + a2 + surcharge(a2);
+    return total;
+}
+
+51.
+function toArray(a, b) {
+  return [a, b];
+}
+
+52. 
+function getFirstElement(arr) {
+  return arr[0];
+}
+
+53. 
+function setFirstElement(arr, firstElement) {
+  arr[0] = firstElement;
+  return arr;
+}
+
+54. 
+function getLastElement(arr) {
+  var lastIndex = arr.length - 1;
+  return arr[lastIndex];
+}
+
+55. 
+function sort(num) {
+    num.sort(function(a, b) {
+        return a - b;
+    });
+    return num;
+}
+
+56. 
+function rotate(arr) {
+  var x = arr.shift();
+  arr.push(x);
+  return arr;
+}
+
+57. 
+function add(arr, x) {
+  if (arr.indexOf(x) === -1) {
+    arr.push(x);
+  }
+  return arr;
+} 
+
+58. 
+function concatUp(arr1, arr2) {
+
+  if (arr2.length >= arr1.length) {
+    return arr1.concat(arr2);
+  }
+
+  return arr2.concat(arr1);
+}
+
+59. 
+function halve(arr) {
+  var len = Math.ceil(arr.length / 2);
+  return arr.slice(0, len);
+}
+
+60. 
+function list(x) {
+
+  if (x.length === 0) {
+    return '';
+  }
+
+  if (x.length === 1) {
+    return x[0];
+  }
+
+  var y = x.slice(0, x.length - 1);
+  var lastWord = x[x.length - 1];
+  return y.join(', ') + ' and ' + lastWord;
+}
+
+61. 
+function flat(arr){
+  return arr[0].concat(arr[1]).concat(arr[2]);
+}
+
+
+62.
+function median(x) {
+  var len = x.length;
+  if (len % 2 === 0) {
+    return (x[len / 2] + x[(len / 2) - 1]) / 2;
+  } else {
+    return x[(len - 1) / 2];
+  }
+}
+
+63. 
+function hello(x){
+  if (x === undefined) {
+    x = "world";
+  }
+  return 'Hello ' + x + '!'
+}
+
+
+64. 
+function cutComment(str) {
+  var foo = str.indexOf('//');
+  if (foo === -1) {
+    return null;
+  }
+  let comment = str.substr(foo + 2);
+  return comment.trim();
+}
+
+65. 
+function addTo(x) {
+  var sum = 0;
+  for (let i = 0; i <= x; i++) {
+    sum = sum + i;
+  }
+  return sum;
+}
+
+66. 
+function factorial(x) {
+  var result = 1;
+  for (let i = 1; i <= x; i++) {
+    result = result * i;
+  }
+  return result;
+}
+
+67. 
+function mean(x) {
+
+  var sum = 0;
+
+  for (let i = 0; i < x.length; i ++) {
+    sum = sum + x[i];
+  }
+
+  return sum / x.length;
+};
+
+68.
+function spaces(len) {
+  var x = '';
+  while (x.length < len) {
+    x = x + ' ';
+  }
+  return x;
+}
+
+69.
+function lcm(a, b) {
+
+  var lcm = 0;
+  var ra;
+  var rb;
+
+  do {
+
+    lcm++;
+    ra = lcm % a;
+    rb = lcm % b;
+
+  } while (ra !== 0 || rb !== 0)
+
+  return lcm;
+}
+
+70. 
+function gcd(a, b) {
+    if (b > a) {
+        var temp = a;
+        a = b;
+        b = temp;
+    }
+
+    while (b != 0) {
+        var remainder = a % b;
+        a = b;
+        b = remainder;
+    }
+    return a;
+}
+
+71. 
+function isPrime(num) {
+    if (num < 2) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+}
+
+72. 
+function sum(arr) {
+    var total = 0;
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr[i].length; j++) {
+            total += arr[i][j];
+        }
+    }
+    return total;
+}
+
+
+73. 
+function max(...num) {
+    return Math.max(...num);
+}
+
+74. 
+function parseFirstInt(input) {
+
+  var par = input;
+
+  for (let i = 0; i < input.length; i++) {
+    var first = parseInt(par);
+    if (!Number.isNaN(first)) {
+      return first;
+    }
+    par = par.substr(1);
+  }
+
+  return NaN;
+}
+
+75. 
+function add(sum) {
+    var numbers = sum.split('+');
+    
+    var result = numbers.reduce((sum, current) => sum + Number(current), 0);
+    
+    return result;
+}
+
+76. 
+function sum(num) {
+    return num.reduce((acc, current) => acc + current, 0);
+}
+
+function mean(num) {
+    return sum(num) / num.length;
+}
+
+77. 
+function reverse(str) {
+
+    if (str.length <= 1) {
+        return str;
+    }
+
+    return reverse(str.substring(1)) + str.charAt(0);
+}
+
+78.
+function arabic(roman) {
+
+  const romanMap = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+  };
+
+  let result = 0;
+
+
+  for (let i = roman.length - 1; i >= 0; i--) {
+    const currentSymbol = roman[i];
+    const currentValue = romanMap[currentSymbol];
+
+    
+    if (i < roman.length - 1) {
+      const nextValue = romanMap[roman[i + 1]];
+      if (currentValue < nextValue) {
+        result -= currentValue;
+      } else {
+        result += currentValue;
+      }
+    } else {
+     
+      result += currentValue;
+    }
+  }
+
+  return result;
+}
+
+79. 
+function roman(num) {
+
+    var tens = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+    var symbols = ["M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"];
+    
+    var c = '';
+    
+    for (var i = 0; i < tens.length; i++) {
+
+        while (num >= tens[i]) {
+            c += symbols[i];
+            num -= tens[i];
+        }
+    }
+    
+    return c;
+}
+
+80. 
+function sumMultiples(x) {
+    let sum = 0;
+    for (let i = 1; i < x; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+            sum += i;
+        }
+    }
+    return sum;
+}

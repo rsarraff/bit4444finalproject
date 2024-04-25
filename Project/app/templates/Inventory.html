@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <!-- Step 1 - Include the fusioncharts core library -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <!-- Step 2 - Include the fusion theme -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.candy.js"></script>
+
+<script>
+    var importedData = JSON.parse({{ chartData | tojson | safe }});
+
+    const dataSource = {
+        chart: {
+            caption: "Product Inventory",
+            subcaption: "Current quantity in stock",
+            xaxisname: "Product ID",
+            yaxisname: "Quantity",
+            theme: "candy"
+        },
+        data: importedData
+        
+    };
+
+    FusionCharts.ready(function() {
+        var myChart = new FusionCharts({
+            type: "column2d",  // Use "bar2d" for horizontal bars
+            renderAt: "chart-container",
+            width: "100%",  // Adjust width as needed
+            height: "100%",  // Adjust height as needed
+            dataFormat: "json",
+            dataSource
+        }).render();
+    });
+</script>
+
+<div id="chart-container">Chart will render here</div>
+
+{% endblock content %}

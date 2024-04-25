@@ -1,0 +1,20 @@
+1. SELECT DISTINCT SupplierID FROM Products
+
+2. SELECT ProductName, SupplierID FROM Products WHERE UnitPrice > 20;
+
+3. SELECT ProductName FROM Products WHERE ProductName LIKE 'C%' AND Discontinued = 0;
+
+4. SELECT Country, COUNT(SupplierID) AS NumberOfSuppliers FROM Suppliers GROUP BY Country;
+
+5. SELECT S.CompanyName, COUNT(P.ProductID) AS NumOfProducts, AVG(P.UnitPrice) AS AvgPrice FROM Suppliers AS S JOIN Products AS P ON S.SupplierID = P.SupplierID GROUP BY S.SupplierID;
+
+6. SELECT DISTINCT S.CompanyName, S.City, S.Country FROM Suppliers AS S JOIN Products AS P ON S.SupplierID = P.SupplierID WHERE P.Discontinued = 0;
+
+7. SELECT S.CompanyName FROM Suppliers AS S JOIN Products AS P ON S.SupplierID = P.SupplierID GROUP BY S.SupplierID HAVING COUNT(P.ProductID) >= 2;
+
+8. INSERT INTO Products (ProductName, SupplierID, CategoryID) VALUES ('The Very Good Product', 1, 1);
+
+9. UPDATE Products SET ReorderLevel = ReorderLevel * 1.2, UnitPrice = UnitPrice * 0.9;
+
+10. DELETE FROM Products WHERE Discontinued = 1;
+

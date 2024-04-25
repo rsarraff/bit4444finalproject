@@ -1,0 +1,44 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<script>
+    //ajax
+    document.addEventListener("DOMContentLoaded", init);
+
+    function init() {
+        //set up an event handler for the select element
+        document.getElementById("sid").addEventListener("change", loadTable)
+
+    }
+
+    function loadTable() {
+        //ajax function
+        var sid = document.getElementById("sid").value;
+
+        fetch("/searchProducts?suppid=" + sid, {
+            method: "GET",
+        }).then(response => response.text()).then(data=>{
+            document.getElementById("placeholder").innerHTML = data;
+        }).catch(error =>{
+            console.error(error);
+        })
+    }
+</script>
+
+<label for="">Select a Supplier ID to Search for Products:
+    <select id="sid" class="form-select" aria-label="Default select example">
+        <option selected></option>
+        {% if suppids %}
+            {% for supp in suppids %}
+                <option value="{{ supp.SupplierID }}" >{{ supp.SupplierID }}</option>
+            {% endfor %}
+        {% endif %}
+
+      </select>
+</label>
+
+<div id="placeholder">
+</div>
+
+{% endblock content %}

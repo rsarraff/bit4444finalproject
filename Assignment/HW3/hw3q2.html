@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function runningclock() {
+            setInterval(displayClock, 1000);
+
+            function displayClock() {
+                let currentTime = new Date();
+                let springBreakStart = new Date(2024, 2, 2); 
+                let timeDiff = springBreakStart - currentTime;
+
+                if (timeDiff > 0) {
+
+                    let days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+
+
+                    let countdown = days + " days, " + hours + " hours, " + minutes + " minutes until Spring Break!";
+                    document.getElementById("placeholder").innerHTML = countdown;
+                } else {
+
+                    document.getElementById("placeholder").innerHTML = "Spring Break has started or passed!";
+                }
+            }
+        }
+
+        function init() {
+            console.log("Page loaded and script initiated.");
+            runningclock();
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
+
+    <div id="placeholder">Loading...</div>
+</body>
+</html>
