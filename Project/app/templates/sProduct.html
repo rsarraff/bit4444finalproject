@@ -5,16 +5,15 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("search-button").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent the form from submitting via the browser
+            event.preventDefault(); 
             sProduct();
         });
     });
 
     function sProduct() {
         var searchQuery = document.getElementById("search-query").value.trim();
-        var searchType = isNaN(parseInt(searchQuery)) ? 'PName' : 'PID'; // Assuming PID is a number
+        var searchType = isNaN(parseInt(searchQuery)) ? 'PName' : 'PID'; 
 
-        // Build the search URL
         var searchURL = "/sProduct?" + searchType + "=" + encodeURIComponent(searchQuery);
 
         fetch(searchURL, {
@@ -30,27 +29,24 @@
 
 <style>
     #search-button {
-        background-color: black; /* Make the button black */
-        color: white; /* Change text color to white for better readability */
+        background-color: black; 
+        color: white; 
     }
     
     .search-container {
-        margin-top: 50px; /* Add more space at the top to lower the button */
+        margin-top: 50px; 
     }
 </style>
 
-<!-- Search Form -->
 <div class="container search-container">
     <h2>Search for a Product</h2>
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" id="search-query" type="search" name="search_query" placeholder="Type in product name or product ID" aria-label="Search" required>
-        <button class="btn my-2 my-sm-0" id="search-button" type="submit">Search</button>
+        <button class="btn my-2 my-sm-0" id="search-button" style="margin-top: 20px;" type="submit">Search</button>
     </form>
 </div>
 
-<!-- Placeholder for Search Results -->
 <div class="container mt-4" id="search-results">
-    <!-- Search results will be inserted here by AJAX call -->
 </div>
 
 {% endblock content %}

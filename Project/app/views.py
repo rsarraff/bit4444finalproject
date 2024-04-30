@@ -57,7 +57,7 @@ def addProduct():
         flash("Product description is required.")
         error = True
     if not unitp or not unitp.isdigit() or int(unitp) < 0:
-        flash("Product description is required.")
+        flash("Unit price is required.")
         error = True
     if not pcategory:
         flash("Product category is required.")
@@ -66,12 +66,11 @@ def addProduct():
         flash("Product quantity must be a non-negative integer.")
         error = True
     if not image:
-        flash("Product name is required.")
+        flash("Product image is required.")
         error = True
 
     if error:
         return render_template('aProduct.html', pid=pid, pname=pname, pdescription=pdescription, pcategory=pcategory, pquantity=pquantity)
-    # Insert operation
     sql = "INSERT INTO ProductProfile (PID, PName, PDescription,UnitPrice, PCategory, Quantity, Image) VALUES (%s, %s, %s, %s, %s, %s, %s)"
     cursor.execute(sql, (pid, pname, pdescription, unitp, pcategory, pquantity,image))
     flash("Product added successfully.")
@@ -147,7 +146,7 @@ def modifyProduct():
         flash("Product description is required.")
         error = True
     if not unitp or not unitp.isdigit() or int(unitp) < 0:
-        flash("Product description is required.")
+        flash("Unit price is required.")
         error = True
     if not pcategory:
         flash("Product category is required.")
@@ -156,7 +155,7 @@ def modifyProduct():
         flash("Product quantity must be a non-negative integer.")
         error = True
     if not image:
-        flash("Product name is required.")
+        flash("Product image url is required.")
         error = True
     if error:
         return render_template('mProduct.html', pid=pid, pname=pname, pdescription=pdescription, pcategory=pcategory, pquantity=pquantity, unitprice=unitp, urlimage=image)
@@ -188,19 +187,18 @@ def sProducts():
         products = cursor.fetchall()
         return render_template('search_results_partial.html', products=products)
     else:
-        # If no query parameters, render the search form instead
         return render_template('sProduct.html')
 
 
 
 @app.route('/Inventory')
 def Inventory():
-    sql = "SELECT PID as label, Quantity as value FROM ProductProfile"
+    sql = "SELECT PName as label, Quantity as value FROM ProductProfile"
     cursor.execute(sql)
     inventory_data = cursor.fetchall()
 
-    # Convert the data to JSON format for the chart
-    chartData = json.dumps(inventory_data)
+    chartData = json.dumps(inventory_data, default=str) 
     
     return render_template('Inventory.html', chartData=chartData)
+
 
