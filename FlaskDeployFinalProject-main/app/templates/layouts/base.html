@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&amp;display=swap">
+    <link rel="stylesheet" href="/static/assets/fonts/font-awesome.min.css">
+</head>
+
+<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="72">
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase navbar-light" id="mainNav">
+        <a class="navbar-brand d-flex align-items-center justify-content-center" href="#page-top">
+            <img src="/static/assets/img/BlacksburgFM.jpg" style="height: 50px; margin: 20px;">
+        </a>
+        <div class="container"><a class="navbar-brand" href="#page-top">Blacksburg Farm Market</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler text-white bg-primary navbar-toggler-right text-uppercase rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="/">Home</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="createShippingRecord">Add Shipping Record</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="modifyShippingRecord">Modify Shipping Record</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="searchShipping">Search Shipping Record</a></li>
+					<li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="deleteShipping">Delete Shipping Record</a></li>
+                    <li class="nav-item px-lg-4"><a class="nav-link text-uppercase" href="ShippingData">Shipping Data</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class= "page landing-page">
+
+        {% block content %} {% endblock content %}
+
+    </main>
+    <script src="/static/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/assets/js/freelancer.js"></script>
+</body>
+
+</html>

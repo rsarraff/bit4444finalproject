@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("search-button").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the form from submitting via the browser
+            searchShipping();
+        });
+    });
+
+    function searchShipping() {
+        var searchQuery = document.getElementById("search-query").value.trim();
+
+        // Correct the search URL to match Flask route
+        var searchURL = "/searchShipping?searchQuery=" + searchQuery;
+
+        fetch(searchURL, {
+            method: "GET",
+        }).then(response => response.text()).then(data => {
+            document.getElementById("search-results").innerHTML = data;
+        }).catch(error => {
+            console.error('Error:', error);
+            document.getElementById("search-results").innerHTML = '<p>Error loading results.</p>';
+        });
+    }
+
+</script>
+
+<style>
+    #search-button {
+        background-color: black;
+        /* Make the button black */
+        color: white;
+        /* Change text color to white for better readability */
+    }
+
+    .search-container {
+        margin-top: 50px;
+        /* Add more space at the top to lower the button */
+    }
+</style>
+
+<!-- Search Form -->
+<div class="container search-container">
+    <h2>Search for a Shipping Record</h2>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" id="search-query" type="search" name="search_query"
+            placeholder="Type in order ID or shipping ID" aria-label="Search" required>
+        <button class="btn my-2 my-sm-0" id="search-button" type="submit">Search</button>
+    </form>
+</div>
+
+<!-- Placeholder for Search Results -->
+<div class="container mt-4" id="search-results">
+    <!-- Search results will be inserted here by AJAX call -->
+</div>
+
+{% endblock content %}

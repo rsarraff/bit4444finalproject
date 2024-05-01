@@ -5,7 +5,7 @@ FROM python:3.8-alpine
 COPY ./requirements.txt /requirements.txt
 
 # switch working directory
-# WORKDIR /app
+WORKDIR /
 RUN apk add --update --no-cache --virtual .tmp-build-deps \
     gcc libc-dev linux-headers postgresql-dev \
     && apk add libffi-dev
@@ -14,7 +14,7 @@ RUN apk add --update --no-cache --virtual .tmp-build-deps \
 RUN python -m pip install --no-cache-dir --disable-pip-version-check --requirement requirements.txt
 
 # copy every content from the local file to the image
-# COPY . /app
+COPY . /
 
 # configure the container to run in an executed manner
 # ENTRYPOINT [ "python" ]

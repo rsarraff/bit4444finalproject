@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<form method="POST" action="/createShippingForm" class="container mt-5">
+  <h2>Create Shipping Record</h2>
+  <div class="mb-3">
+    <label for="">Select a Order ID:
+      <select id="orderid" name="orderid" class="form-select" aria-label="Default select example">
+        <option selected>###</option>
+        {% if orderid %}
+            {% for oid in orderid %}
+                <option value="{{ oid.OID }}"> {{ oid.OID }}</option>
+            {% endfor %}
+        {% endif %}
+    </select>    
+  </label>
+  </div>
+  
+  <div class="mb-3">
+    <label for="vendor" class="form-label">Vendor</label>
+    <select id="vendor" name="vendor" class="form-control">
+      <option value="">Select Vendor</option>
+      <option value="ups">UPS</option>
+      <option value="usps">USPS</option>
+      <option value="fedex">FedEx</option>
+    </select>
+  </div>
+  
+  <div class="mb-3">
+    <label for="shippingDate" class="form-label">Shipping Date</label>
+    <input id="shippingDate" name="shippingDate" type="date" class="form-control" value="{{shippingDate}}">
+  </div>
+  
+  <div class="mb-3">
+    <label for="shippingStatus" class="form-label">Shipping Status</label>
+    <select id="shippingStatus" name="shippingStatus" class="form-control">
+      <option selected>Select Shipping Status</option>
+      <option value="notShipped">Not Shipped</option>
+      <option value="shipped">Shipped</option>
+      <option value="inTransit">In Transit</option>
+      <option value="delivered">Delivered</option>
+      <option value="delayed">Delayed</option>
+    </select>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+{% endwith %}
+{% endblock content %}

@@ -1,0 +1,64 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<form method="POST" action="/modifyShippingForm" class="container mt-5">
+    <h2>Modify Shipping Record</h2>
+    <div class="mb-3">
+        <label for="">Select a Shipping ID:
+            <select name="shippingid" class="form-select" aria-label="Default select example">
+                <option selected></option>
+                {% if shippingid %}
+                {% for sid in shippingid %}
+                <option value="{{ sid.SID }}"> {{ sid.SID }}</option>
+                {% endfor %}
+                {% endif %}
+            </select>
+        </label>
+    </div>
+    <div class="mb-3">
+        <label for="vendor" class="form-label">Vendor</label>
+        <select id="vendor" name="vendor" class="form-control">
+            <option value="">Select Vendor</option>
+            <option value="ups">UPS</option>
+            <option value="usps">USPS</option>
+            <option value="fedex">FedEx</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="shippingDate" class="form-label">Shipping Date</label>
+        <input id="shippingDate" name="shippingDate" type="date" class="form-control" value="{{shippingDate}}">
+    </div>
+
+    <div class="mb-3">
+        <label for="shippingStatus" class="form-label">Shipping Status</label>
+        <select id="shippingStatus" name="shippingStatus" class="form-control">
+            <option selected>Select Shipping Status</option>
+            <option value="notShipped">Not Shipped</option>
+            <option value="shipped">Shipped</option>
+            <option value="inTransit">In Transit</option>
+            <option value="delivered">Delivered</option>
+            <option value="delayed">Delayed</option>
+        </select>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="verifyCheck" name="verify">
+        <label class="form-check-label" for="verifyCheck">Verify changes</label>
+    </div>
+    <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Modify Shipping Record</button>
+    </div>
+</form>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="alerts">
+    {% for message in messages %}
+    <li class="alert">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{% endblock content %}

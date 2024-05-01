@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html'%}
+{% block content %}
+
+<h1>Shipping record successfully added</h1>  
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {%for message in messages %}
+    <li>{{message}}</li>
+    {%endfor%}
+</ul>
+{%endif%}
+{%endwith%}
+
+
+{% endblock content %}

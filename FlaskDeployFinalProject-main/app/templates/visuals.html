@@ -1,0 +1,42 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<!-- Step 1 - Include the fusioncharts core library -->
+<script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+<!-- Step 2 - Include the fusion theme -->
+<script type="text/javascript"
+    src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.candy.js"></script>
+
+<script>
+    var importedData = JSON.parse({{ chartData | tojson | safe }});
+
+    const dataSource = {
+        chart: {
+            caption: "Shipment Request Breakdown",
+            subcaption: "Status of shipping requests",
+            xaxisname: "Shipping Status",
+            yaxisname: "Quantity",
+            theme: "candy"
+        },
+        data: importedData
+
+    };
+
+
+
+    FusionCharts.ready(function () {
+        var myChart = new FusionCharts({
+            type: "column2d", 
+            renderAt: "chart-container",
+            width: "100%",  
+            height: "500%", 
+            dataFormat: "json",
+            dataSource
+        }).render();
+    });
+</script>
+
+<div id="chart-container">Chart will render here</div>
+
+{% endblock content %}
